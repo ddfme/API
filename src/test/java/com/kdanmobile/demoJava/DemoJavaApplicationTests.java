@@ -3,6 +3,7 @@ package com.kdanmobile.demoJava;
 import com.kdanmobile.demoJava.kdanAPIs.FileConvertAPI;
 import com.kdanmobile.demoJava.entity.FileInfoDTO;
 import com.kdanmobile.demoJava.entity.TaskInfoDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import java.net.URLConnection;
 import java.util.List;
 
 @SpringBootTest
+@Slf4j
 class DemoJavaApplicationTests {
 	@Autowired
 	private FileConvertAPI fileConvertAPI;
@@ -42,16 +44,11 @@ class DemoJavaApplicationTests {
 					InputStream inStream = conn.getInputStream();
 					FileOutputStream fs = new FileOutputStream("C:/Users/00/Desktop/" + fileInfoDTO.getDownloadUrl().substring(fileInfoDTO.getDownloadUrl().indexOf("@")+1));
 					IOUtils.copy(inStream, fs);
-				} catch (FileNotFoundException e) {
+				} catch (IOException e) {
 					e.printStackTrace();
-				} catch (IOException ioException){
-
 				}
 			}
 		}
-
-		System.out.println();
-
 	}
 
 }

@@ -36,13 +36,13 @@ public class FileConvertAPI {
     /**
      * 获取任务id
      *
-     * @param convertTypeUrl 使用功能
+     * @param executeTypeUrl 使用功能
      * @return 任务id
      */
-    public String getTask(String convertTypeUrl) {
+    public String getTask(String executeTypeUrl) {
         // 生成请求并设置请求地址URL
         Request request = new Request.Builder()
-                .url("http://" + serverUrl + ":7000/v1/task/" + convertTypeUrl)
+                .url("http://" + serverUrl + ":8080/server/v1/task/" + executeTypeUrl)
                 .build();
         // 发送请求获得响应
         Response response = null;
@@ -113,7 +113,7 @@ public class FileConvertAPI {
         // 生成请求并设置请求地址URL
         // GET请求传参 taskId
         Request request = new Request.Builder()
-                .url("http://" + serverUrl + ":7000/v1/convert/start?taskId=" + taskId)
+                .url("http://" + serverUrl + ":8080/server/v1/convert/start?taskId=" + taskId)
                 .build();
         // 发送请求获得响应
         Response response;
